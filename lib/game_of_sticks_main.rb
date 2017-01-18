@@ -2,9 +2,10 @@ require_relative 'game_of_sticks'
 
 def main
   display_greeting
-  get_number_of_sticks
-  get_number_of_players
-
+  number_of_sticks = get_number_of_sticks
+  number_of_players = get_number_of_players
+  game = Game.new(number_of_players, number_of_sticks)
+  #puts game
 end
 
 def display_greeting
@@ -40,6 +41,7 @@ def validate_input(input)
     end
     valid = true
   end
+  input
 end
 
 if __FILE__ == $PROGRAM_NAME

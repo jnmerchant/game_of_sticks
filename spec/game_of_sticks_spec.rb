@@ -16,4 +16,13 @@ describe "#get_remaining_sticks" do
   end
 end
 
+describe "#get_remaining_sticks" do
+  context "#return the number of sticks remaining after a players turn" do
+    it "#reduces the re" do
+      game = Game.new(2, 50)
+      expect(game.get_remaining_sticks(3)).to be 47
+    end
+  end
+end
+
 end
