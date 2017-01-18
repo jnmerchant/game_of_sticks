@@ -12,24 +12,33 @@ def display_greeting
   puts "How many sticks are there on the table initially (10-100)? "
 end
 
+def display_player_prompt
+  puts "Please specify the number of player by entering 1 or 2."
+end
+
 def get_number_of_sticks
-  gets.chomp.to_i
-  validate_input
+  sticks_input = gets.chomp.to_i
+  validate_input(sticks_input)
 end
 
 def get_number_of_players
-  puts "Please enter 1 or 2 for the number of players:"
-  gets.chomp.to_i
-  validate_input
+  display_player_prompt
+  player_input = gets.chomp.to_i
+  validate_input(player_input)
 end
 
-def validate_input
-  calling_method = puts caller_locations(1,1)[0].label
-  if calling_method = 'get_number_of_sticks'  &&
-    puts "Please enter a number between 10 and 100: "
-  end
-  if calling_method = 'get_number_of_players' &&
-    puts "Please specify the number of player by entering 1 or 2."
+def validate_input(input)
+  calling_method = caller_locations(1,1)[0].label
+  valid = false
+  until valid
+    if calling_method == 'get_number_of_sticks'  && !input.between?(10,100)
+      puts "Please enter a number of sticks between 10 and 100: "
+      get_number_of_sticks
+    end
+    if calling_method == 'get_number_of_players' && !input.between?(1,2)
+      get_number_of_players
+    end
+    valid = true
   end
 end
 
