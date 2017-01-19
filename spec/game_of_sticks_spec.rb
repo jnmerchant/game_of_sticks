@@ -29,9 +29,25 @@ describe "#next_players_turn" do
       game.player_turn = 'Player2'
       expect(game.next_players_turn).to eq 'Player1'
     end
+
+    it "#determines next_players_turn when player_turn == ''" do
+      game = Game.new(2, 50)
+      game.player_turn = ''
+      expect(game.next_players_turn).to eq('Player1').or eq('Player2')
+    end
   end
 end
 
-
+describe "#take_turn" do
+  context "#player takes a turn" do
+    it "#processes a players turn in the game" do
+      game = Game.new(2, 50)
+      game.player_turn = ''
+      game.take_turn(3)
+      expect(game.number_sticks_remaining).to eq 47
+      expect(game.next_players_turn).to eq('Player1').or eq('Player2')
+    end
+  end
+end
 
 end

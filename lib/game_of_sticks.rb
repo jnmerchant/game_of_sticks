@@ -16,12 +16,17 @@ class Game
   end
 
   def next_players_turn
-    players = ["Player1","Player2"]
+    players = ["Player1", "Player2"]
     if @player_turn == '' && @number_of_players == 2
       @player_turn = players.sample
     else
       @player_turn == players[0] ? @player_turn = players[1] : @player_turn = players[0]
     end
+  end
+
+  def take_turn(sticks_taken)
+    @number_sticks_remaining = get_remaining_sticks(sticks_taken)
+    @player_turn = next_players_turn
   end
 
   def to_s
