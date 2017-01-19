@@ -11,8 +11,8 @@ class Game
   attr_accessor :number_sticks_remaining
   attr_accessor :player_turn
 
-  def get_remaining_sticks(sticks_in_turn)
-    @number_sticks_remaining -= sticks_in_turn
+  def get_remaining_sticks(sticks_taken_turn)
+    @number_sticks_remaining -= sticks_taken_turn
   end
 
   def next_players_turn
